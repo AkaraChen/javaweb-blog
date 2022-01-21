@@ -1,0 +1,28 @@
+POST http://localhost:8080/post/update
+Content-Type: application/x-www-form-urlencoded
+
+id=17&content=new-element
+
+###
+POST http://localhost:8080/post/del
+Content-Type: application/x-www-form-urlencoded
+
+id=15
+
+###
+GET http://localhost:8080/post/list?pid=1&size=8
+Accept: application/json
+
+###
+GET http://localhost:8080/post/random
+Accept: application/json
+
+###
+GET http://localhost:8080/post/get?id=1
+Accept: application/json
+
+###
+POST http://localhost:8080/post/add
+Content-Type: application/x-www-form-urlencoded
+
+author=1&content=测试文章2&key=1&category=1&title=测试文章3
