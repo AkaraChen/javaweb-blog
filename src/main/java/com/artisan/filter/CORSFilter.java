@@ -19,6 +19,11 @@ public class CORSFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+		//处理编码
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setHeader("Content-type", "text/html;charset=UTF-8");
+
 		//允许跨域访问
 		response.setContentType("text/html;charset=UTF-8");
 		response.setHeader("Access-Control-Allow-Origin", "*");
