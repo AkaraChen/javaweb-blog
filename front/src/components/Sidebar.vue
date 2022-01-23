@@ -1,13 +1,26 @@
 <template>
-  <div class="ad-bar">
-    <img width="240" src="https://pic.rmb.bdstatic.com/bjh/c7b798a3051862adf4e4562cc31ee88c.png" alt="">
-    <img width="240" src="https://pic.rmb.bdstatic.com/bjh/4d7b5315eec460d3bf32ed0fc7a3cb91.png" alt="">
+  <div class="ad-bar" v-for="item in meta">
+    <a :href="item.link" target="_blank">
+      <img width="240" :src="item.pic" alt="">
+    </a>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "Sidebar"
+  name: "Sidebar",
+  data() {
+    return {
+      meta: ''
+    }
+  },
+  created() {
+    axios.get(this.$store.state.baseBackend + "/setting/check?name=sidebar").then(response => {
+      this.meta = response.data
+    })
+  }
 }
 </script>
 

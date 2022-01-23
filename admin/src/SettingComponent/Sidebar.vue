@@ -27,7 +27,16 @@ export default {
     const twopic = ref(undefined)
     const twolink = ref(undefined)
     const baseBackend = useStore().state.baseBackend
+    axios.get(baseBackend + '/setting/show')
     return {onepic, onelink, twolink, twopic, baseBackend}
+  },
+  created() {
+    axios.get(this.baseBackend + "/setting/check?name=sidebar").then(response => {
+      this.onepic = response.data[0].pic
+      this.onelink = response.data[0].link
+      this.twopic = response.data[1].pic
+      this.twolink = response.data[1].link
+    })
   },
   methods: {
     update() {
